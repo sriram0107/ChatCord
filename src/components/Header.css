@@ -1,0 +1,59 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 7vh;
+  background-color: #303030;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile_pic {
+  margin: 5px;
+  height: 5vh;
+  width: 5vh;
+  background-color: transparent;
+  object-fit: contain;
+}
+
+.header_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+}
+.header_main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 25px;
+  background-color: #686868;
+  width: 50%;
+}
+.header_right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Josefin Sans", cursive;
+  font-size: large;
+  margin-right: 5%;
+  color: white;
+}
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: 0px;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .header_left {
+    font-size: smaller;
+  }
+  .header_main {
+    width: fit-content;
+  }
+  .header_right {
+    font-size: xx-small;
+  }
+}
