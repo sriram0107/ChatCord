@@ -34,6 +34,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   font-family: "Josefin Sans", cursive;
   font-size: large;
   margin-right: 5%;

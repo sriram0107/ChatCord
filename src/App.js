@@ -2,17 +2,17 @@ import React from "react";
 import Main from "./components/MainComponent";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { CreateStore } from "./redux/CreateStore";
 
-/*
-TODOS
-IMPORT REDUX 
-*/
+const store = CreateStore();
 
 function App() {
   return (
-    <BrowserRouter>
-      <Main />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

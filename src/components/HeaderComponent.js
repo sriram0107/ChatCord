@@ -1,6 +1,7 @@
 import React from "react";
-import "./Header.css";
+import "./styles/Header.css";
 import SearchIcon from "@material-ui/icons/Search";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import profile_picture from "../images/profile_picture.png";
 
 class Header extends React.Component {
@@ -13,8 +14,8 @@ class Header extends React.Component {
     return (
       <div className="header">
         <div className="header_left">
-          <img className="profile_pic" src={profile_picture} />
-          <p>{this.props.user.username}</p>
+          <img className="profile_pic" src={this.props.user?.picture} />
+          <p>{this.props.user?.name}</p>
         </div>
         <div className="header_main">
           <SearchIcon />
@@ -22,6 +23,9 @@ class Header extends React.Component {
         </div>
         <div className="header_right">
           <h2>ChatCord</h2>
+          <div className="logout_box" onClick={this.props.logout}>
+            <ExitToAppIcon />
+          </div>
         </div>
       </div>
     );

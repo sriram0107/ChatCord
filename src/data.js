@@ -57,5 +57,101 @@ export const messages = {
       username: "mojiji",
       message: "come valo",
     },
+    {
+      username: "regurxo",
+      message: "Welcome to chatcord",
+    },
+    {
+      username: "mojiji",
+      message: "Hello",
+    },
+    {
+      username: "regurxo",
+      message: "valo?",
+    },
+    {
+      username: "mojiji",
+      message: "come valo",
+    },
+    {
+      username: "regurxo",
+      message: "Welcome to chatcord",
+    },
+    {
+      username: "mojiji",
+      message: "Hello",
+    },
+    {
+      username: "regurxo",
+      message: "valo?",
+    },
+    {
+      username: "mojiji",
+      message: "come valo",
+    },
+    {
+      username: "regurxo",
+      message: "Welcome to chatcord",
+    },
+    {
+      username: "mojiji",
+      message: "Hello",
+    },
+    {
+      username: "regurxo",
+      message: "valo?",
+    },
+    {
+      username: "mojiji",
+      message: "come valo",
+    },
+    {
+      username: "regurxo",
+      message: "Welcome to chatcord",
+    },
+    {
+      username: "mojiji",
+      message: "Hello",
+    },
+    {
+      username: "regurxo",
+      message: "valo?",
+    },
+    {
+      username: "mojiji",
+      message: "come valo",
+    },
+    {
+      username: "regurxo",
+      message: "Welcome to chatcord",
+    },
+    {
+      username: "mojiji",
+      message: "Hello",
+    },
+    {
+      username: "regurxo",
+      message: "valo?",
+    },
+    {
+      username: "mojiji",
+      message: "come valo",
+    },
+    {
+      username: "regurxo",
+      message: "Welcome to chatcord",
+    },
+    {
+      username: "mojiji",
+      message: "Hello",
+    },
+    {
+      username: "regurxo",
+      message: "valo?",
+    },
+    {
+      username: "mojiji",
+      message: "come valo",
+    },
   ],
 };
