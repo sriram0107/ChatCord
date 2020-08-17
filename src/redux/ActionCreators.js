@@ -59,12 +59,12 @@ export const addNewRoom = (room) => (dispatch) => {
 };
 
 export const currentRooms = () => (dispatch) => {
+  dispatch(currentRoom(roomlist));
   db.collection("room_data")
-    .get()
     .then((rooms) => {
       var roomlist = [];
       rooms.forEach((room) => roomlist.push(room.data().room));
       dispatch(currentRoom(roomlist));
-    })
-    .catch((err) => console.log(err));
+    });
+}
 };

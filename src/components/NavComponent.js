@@ -31,18 +31,14 @@ class Nav extends React.Component {
     if (room_name) this.props.addNewRoom(room_name);
   }
   componentDidMount() {
-    this.props.currentRooms();
-    db.collection("user_data")
-      .get()
-      .then((users) => {
-        var userlist = [];
-        users.forEach((doc) => userlist.push(doc.data()));
-        this.setState({
-          users: userlist,
-        });
-      })
-      .catch((err) => alert(err));
-  }
+    db.collection("user_data").onSnapshot((users) => {
+      var userlist = [];
+      users.forEach((doc) => userlist.push(doc.data()));
+      this.setState({
+        users: userlist,
+      });
+    });
+    ////////
   render() {
     const toggleNav = () => this.setState({ navOpen: !this.state.navOpen });
     const rooms = this.props.rooms?.map((room) => {

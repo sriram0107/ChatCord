@@ -1,5 +1,4 @@
 import React from "react";
-import { messages } from "../data";
 import profile_picture from "../images/profile_picture.png";
 import db from "../firebase";
 import "./styles/message.css";
@@ -8,16 +7,18 @@ class Message extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: null,
+      roomMessages: null,
       new_message: "",
     };
   }
+  key = 0;
   onSubmit = (e) => {
     e.preventDefault();
     var message = {
       username: this.props.user.name,
       message: this.state.new_message,
       picture: this.props.user.picture,
+      time: Date.now(),
     };
     this.setState({ new_message: "" });
     db.collection("room_data")
@@ -28,35 +29,34 @@ class Message extends React.Component {
   };
 
   componentDidMount() {
-    db.collection("rooms")
+    var unsubscribe = db
+      .collection("room_data")
       .doc(this.props.room)
       .collection("messages")
-      .get()
-      .then((messages) => {
+      .orderBy("time", "asc")
+      .onSnapshot((messages) => {
         var message_list = [];
-        messages.forEach((message) => message_list.push(message.data()));
-        this.setState({ message: message_list });
-      })
-      .catch((err) => console.log(err));
+        messages.forEach((message) => {
+          message_list.push(message.data());
+        });
+        this.setState({ roomMessages: message_list });
+      });
   }
-  // componentDidUpdate(prevProps, prevState) {
-  //   db.collection("rooms")
-  //     .doc(this.props.room)
-  //     .get()
-  //     .then((messages) => this.setState({ message: messages }))
-  //     .catch((err) => console.log(err));
-  // }
+
   render() {
-    const messageDisplay = this.state.messages?.map((message) => {
+    const messageDisplay = this.state.roomMessages?.map((message) => {
+      this.key += 1;
       return (
-        <li>
+        <li key={this.key} className="message_body">
           <div className="main_message">
             <img src={message.picture} className="profile_pic" alt="pic" />
             <div className="message_body">
-              <strong>{message.username}</strong>
+              <div className="message_header">
+                <strong>{message.username}</strong>
+                <i>{"  " + new Date(message.time).toUTCString()}</i>
+              </div>
               <p>{message.message}</p>
             </div>
-            <i>{message.time}</i>
           </div>
         </li>
       );
