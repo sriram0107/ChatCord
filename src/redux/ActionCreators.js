@@ -58,13 +58,6 @@ export const addNewRoom = (room) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const currentRooms = () => (dispatch) => {
+export const currentRooms = (roomlist) => (dispatch) => {
   dispatch(currentRoom(roomlist));
-  db.collection("room_data")
-    .then((rooms) => {
-      var roomlist = [];
-      rooms.forEach((room) => roomlist.push(room.data().room));
-      dispatch(currentRoom(roomlist));
-    });
-}
 };

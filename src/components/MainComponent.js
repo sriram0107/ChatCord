@@ -6,9 +6,7 @@ import { Switch, Redirect, Route, withRouter } from "react-router";
 import { connect } from "react-redux";
 import Message from "./MessageComponent";
 import Home from "./HomeComponent";
-import db from "../firebase";
 import Loading from "./Loading";
-import { auth, provider } from "../firebase";
 import { addNewUser, logoutUser } from "../redux/ActionCreators";
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,5 +1,4 @@
 import React from "react";
-import profile_picture from "../images/profile_picture.png";
 import db from "../firebase";
 import "./styles/message.css";
 
@@ -29,8 +28,7 @@ class Message extends React.Component {
   };
 
   componentDidMount() {
-    var unsubscribe = db
-      .collection("room_data")
+    db.collection("room_data")
       .doc(this.props.room)
       .collection("messages")
       .orderBy("time", "asc")

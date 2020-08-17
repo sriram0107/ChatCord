@@ -1,5 +1,4 @@
 import React from "react";
-import db from "../firebase";
 import "./styles/login.css";
 import { auth, provider } from "../firebase";
 

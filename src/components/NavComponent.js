@@ -1,6 +1,4 @@
 import React from "react";
-import MenuIcon from "@material-ui/icons/Menu";
-import profile_picture from "../images/profile_picture.png";
 import db from "../firebase";
 import "./styles/nav.css";
 import { withRouter } from "react-router";
@@ -9,7 +7,7 @@ import { connect } from "react-redux";
 import { addNewRoom, currentRooms } from "../redux/ActionCreators";
 const mapDispatchToProps = (dispatch) => ({
   addNewRoom: (room) => dispatch(addNewRoom(room)),
-  currentRooms: () => dispatch(currentRooms()),
+  currentRooms: (roomlist) => dispatch(currentRooms(roomlist)),
 });
 const mapStateToProps = (state) => ({
   rooms: state.rooms,
@@ -31,6 +29,7 @@ class Nav extends React.Component {
     if (room_name) this.props.addNewRoom(room_name);
   }
   componentDidMount() {
+    //new online user listener
     db.collection("user_data").onSnapshot((users) => {
       var userlist = [];
       users.forEach((doc) => userlist.push(doc.data()));
@@ -38,7 +37,13 @@ class Nav extends React.Component {
         users: userlist,
       });
     });
-    ////////
+    //room listener
+    db.collection("room_data").onSnapshot((rooms) => {
+      var roomlist = [];
+      rooms.forEach((room) => roomlist.push(room.data().room));
+      this.props.currentRooms(roomlist);
+    });
+  }
   render() {
     const toggleNav = () => this.setState({ navOpen: !this.state.navOpen });
     const rooms = this.props.rooms?.map((room) => {
