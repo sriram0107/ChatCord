@@ -32,7 +32,7 @@ export const switchMessagesRoom = (messages) => ({
 export const addNewUser = (user) => (dispatch) => {
   dispatch(addUser(user));
   db.collection("user_data")
-    .doc(user.name)
+    .doc()
     .set({
       user: user.name,
       picture: user.picture,
@@ -43,8 +43,9 @@ export const addNewUser = (user) => (dispatch) => {
 export const logoutUser = (user) => (dispatch) => {
   dispatch(deleteUser());
   db.collection("user_data")
-    .doc(user.name)
-    .delete()
+    .where("user", "==", user.name)
+    .get()
+    .then((user) => user.forEach((doc) => doc.ref.delete()))
     .catch((err) => console.log(err));
 };
 
